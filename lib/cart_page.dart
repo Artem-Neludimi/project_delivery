@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './cart_bloc.dart';
+import 'bloc/cart_bloc.dart';
 
 class CartPage extends StatelessWidget {
   CartPage({Key? key}) : super(key: key);
