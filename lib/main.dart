@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_delivery/generated/locale_keys.g.dart';
 import 'package:provider/provider.dart';
 
 import './bloc/cart_bloc.dart';
@@ -8,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+// flutter pub run easy_localization:generate -S "assets/translations"
+// flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart -S "assets/translations"
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -56,7 +59,9 @@ class _ButtonTabsState extends State<ButtonTabs> {
   int _tabIndex = 0;
   final tabs = [
     Center(
-      child: Text('Menu'),
+      child: Text(
+        LocaleKeys.you_have_pushed_the_button_this_many_times.tr(),
+      ),
     ),
     Center(
       child: Text('News'),
