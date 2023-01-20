@@ -15,10 +15,22 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
-  "menu": "Menu"
+  "menu": "Menu",
+  "news": "News",
+  "qrCode": "Qr-code",
+  "more": "More"
 };
 static const Map<String,dynamic> ru = {
-  "menu": "Меню"
+  "menu": "Меню",
+  "news": "Новости",
+  "qrCode": "Qr-код",
+  "more": "Ещё"
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru};
+static const Map<String,dynamic> ua = {
+  "menu": "Меню",
+  "news": "Новини",
+  "qrCode": "Qr-код",
+  "more": "Ще"
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru, "ua": ua};
 }

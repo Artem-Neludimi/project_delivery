@@ -2,5 +2,8 @@
 
 abstract class  LocaleKeys {
   static const menu = 'menu';
+  static const news = 'news';
+  static const qrCode = 'qrCode';
+  static const more = 'more';
 
 }

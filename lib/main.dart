@@ -20,6 +20,7 @@ void main() async {
         supportedLocales: [
           Locale('en'),
           Locale('ru'),
+          Locale('ua'),
         ],
         path: 'assets/translations',
         fallbackLocale: Locale('en'),
@@ -69,13 +70,19 @@ class _ButtonTabsState extends State<ButtonTabs> {
       ),
     ),
     Center(
-      child: Text('News'),
+      child: Text(
+        LocaleKeys.news.tr(),
+      ),
     ),
     Center(
-      child: Text('Qr-code'),
+      child: Text(
+        LocaleKeys.qrCode.tr(),
+      ),
     ),
     Center(
-      child: Text('More'),
+      child: Text(
+        LocaleKeys.more.tr(),
+      ),
     ),
   ];
 
@@ -93,24 +100,25 @@ class _ButtonTabsState extends State<ButtonTabs> {
             unselectedItemColor: Colors.grey,
             items: [
               BottomNavigationBarItem(
-                label: "Menu",
+                label: LocaleKeys.menu.tr(),
                 icon: Icon(Icons.dining_outlined),
               ),
               BottomNavigationBarItem(
-                label: 'News',
+                label: LocaleKeys.news.tr(),
                 icon: Icon(Icons.newspaper),
               ),
               BottomNavigationBarItem(
-                label: 'Qr-code',
+                label: LocaleKeys.qrCode.tr(),
                 icon: Icon(Icons.qr_code),
               ),
               BottomNavigationBarItem(
-                label: 'More',
+                label: LocaleKeys.more.tr(),
                 icon: Icon(Icons.person_outline),
               )
             ],
             onTap: (index) {
               setState(() {
+                context.setLocale(Locale('ua'));
                 _tabIndex = index;
               });
             },
