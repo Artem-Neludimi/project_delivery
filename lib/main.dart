@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import './bloc/cart_bloc.dart';
 import './pages/my_home_page.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:easy_localization/easy_localization.dart';
+
+import 'generated/codegen_loader.g.dart';
 
 // flutter pub run easy_localization:generate -S "assets/translations"
 // flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart -S "assets/translations"
@@ -21,14 +21,16 @@ void main() async {
           Locale('en'),
           Locale('ru'),
         ],
-        path:
-            'assets/translations', // <-- change the path of the translation files
+        path: 'assets/translations',
         fallbackLocale: Locale('en'),
+        assetLoader: CodegenLoader(),
         child: MyApp()),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<CartBloc>(
@@ -43,6 +45,9 @@ class MyApp extends StatelessWidget {
               bodyText2: TextStyle(color: Colors.white),
             ),
           ),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           home: ButtonTabs(),
         ));
   }
@@ -60,7 +65,7 @@ class _ButtonTabsState extends State<ButtonTabs> {
   final tabs = [
     Center(
       child: Text(
-        LocaleKeys.you_have_pushed_the_button_this_many_times.tr(),
+        LocaleKeys.menu.tr(),
       ),
     ),
     Center(
