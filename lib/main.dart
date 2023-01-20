@@ -4,8 +4,25 @@ import 'package:provider/provider.dart';
 import './bloc/cart_bloc.dart';
 import './pages/my_home_page.dart';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:easy_localization/easy_localization.dart';
+
 void main() async {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+        supportedLocales: [
+          Locale('en'),
+          Locale('ru'),
+        ],
+        path:
+            'assets/translations', // <-- change the path of the translation files
+        fallbackLocale: Locale('en'),
+        child: MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

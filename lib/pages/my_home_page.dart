@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../bloc/cart_bloc.dart';
-import '../cart_page.dart';
+import 'cart_page.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
