@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:project_delivery/generated/locale_keys.g.dart';
+import 'package:project_delivery/pages/menu_page.dart';
+import 'package:project_delivery/pages/news_page.dart';
+import 'package:project_delivery/pages/profile_page.dart';
+import 'package:project_delivery/pages/qr_code.dart';
 import 'package:provider/provider.dart';
 
 import './bloc/cart_bloc.dart';
@@ -64,26 +68,10 @@ class ButtonTabs extends StatefulWidget {
 class _ButtonTabsState extends State<ButtonTabs> {
   int _tabIndex = 0;
   final tabs = [
-    Center(
-      child: Text(
-        LocaleKeys.menu.tr(),
-      ),
-    ),
-    Center(
-      child: Text(
-        LocaleKeys.news.tr(),
-      ),
-    ),
-    Center(
-      child: Text(
-        LocaleKeys.qrCode.tr(),
-      ),
-    ),
-    Center(
-      child: Text(
-        LocaleKeys.more.tr(),
-      ),
-    ),
+    MenuPage(),
+    NewsPage(),
+    QrCodePage(),
+    ProfilePage(),
   ];
 
   @override
@@ -118,7 +106,6 @@ class _ButtonTabsState extends State<ButtonTabs> {
             ],
             onTap: (index) {
               setState(() {
-                context.setLocale(Locale('ua'));
                 _tabIndex = index;
               });
             },
