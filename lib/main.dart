@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:project_delivery/generated/locale_keys.g.dart';
-import 'package:project_delivery/pages/menu_page.dart';
-import 'package:project_delivery/pages/news_page.dart';
-import 'package:project_delivery/pages/profile_page.dart';
-import 'package:project_delivery/pages/qr_code.dart';
 import 'package:provider/provider.dart';
-
-import './bloc/cart_bloc.dart';
-import './pages/my_home_page.dart';
-
 import 'package:easy_localization/easy_localization.dart';
 
-import 'generated/codegen_loader.g.dart';
+import './generated/locale_keys.g.dart';
+import './generated/codegen_loader.g.dart';
+import './pages/menu_page.dart';
+import './pages/news_page.dart';
+import './pages/profile_page/profile_page.dart';
+import './pages/qr_code.dart';
 
 // flutter pub run easy_localization:generate -S "assets/translations"
 // flutter pub run easy_localization:generate -f keys -o locale_keys.g.dart -S "assets/translations"
@@ -38,23 +34,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<CartBloc>(
-        create: (context) => CartBloc(),
-        child: MaterialApp(
-          title: 'Flutter Shopping Cart Demo',
-          theme: ThemeData(
-            canvasColor: Colors.black,
-            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange)
-                .copyWith(secondary: Colors.amber),
-            textTheme: const TextTheme(
-              bodyText2: TextStyle(color: Colors.white),
-            ),
-          ),
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          home: ButtonTabs(),
-        ));
+    return MaterialApp(
+      title: 'Flutter Shopping Cart Demo',
+      theme: ThemeData(
+        primaryColor: Colors.black,
+        accentColor: Colors.white,
+        canvasColor: Colors.black,
+        textTheme: const TextTheme(
+          bodyText2: TextStyle(color: Colors.white),
+        ),
+        listTileTheme:
+            ListTileThemeData(iconColor: Colors.grey, textColor: Colors.white),
+        appBarTheme: AppBarTheme(
+          color: Color.fromARGB(232, 20, 20, 20),
+        ),
+      ),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      home: ButtonTabs(),
+    );
   }
 }
 
