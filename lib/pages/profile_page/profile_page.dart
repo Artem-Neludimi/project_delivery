@@ -4,11 +4,16 @@ import 'package:project_delivery/pages/profile_page/languages_pages.dart';
 
 import '../../generated/locale_keys.g.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   Column _tileBuilder(Icon lead, String text, Icon trail) {
     return Column(
       children: [
@@ -117,7 +122,7 @@ class ProfilePage extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => LanguagesPages(),
               ),
-            );
+            ).then((value) => setState(() {}));
           },
           child: ListTile(
             textColor: Colors.white,
@@ -125,7 +130,7 @@ class ProfilePage extends StatelessWidget {
             leading: Icon(Icons.language),
             title: Text('qqq'),
             trailing: Text(
-              'English',
+              LocaleKeys.language.tr(),
               style: TextStyle(color: Colors.grey),
             ),
           ),

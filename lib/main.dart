@@ -17,13 +17,12 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: [
+        supportedLocales: const [
           Locale('en'),
           Locale('ru'),
-          Locale('ua'),
         ],
-        path: 'assets/translations',
         fallbackLocale: Locale('en'),
+        path: 'assets/translations',
         assetLoader: CodegenLoader(),
         child: MyApp()),
   );
@@ -43,29 +42,32 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
           bodyText2: TextStyle(color: Colors.white),
         ),
-        listTileTheme:
-            ListTileThemeData(iconColor: Colors.grey, textColor: Colors.white),
-        appBarTheme: AppBarTheme(
+        listTileTheme: const ListTileThemeData(
+          iconColor: Colors.grey,
+          textColor: Colors.white,
+        ),
+        appBarTheme: const AppBarTheme(
           color: Color.fromARGB(232, 20, 20, 20),
         ),
       ),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: ButtonTabs(),
+      home: ButtonTabs(0),
     );
   }
 }
 
 class ButtonTabs extends StatefulWidget {
-  const ButtonTabs({super.key});
+  int tabIndex;
+
+  ButtonTabs(this.tabIndex);
 
   @override
   State<ButtonTabs> createState() => _ButtonTabsState();
 }
 
 class _ButtonTabsState extends State<ButtonTabs> {
-  int _tabIndex = 0;
   final tabs = [
     MenuPage(),
     NewsPage(),
@@ -75,13 +77,13 @@ class _ButtonTabsState extends State<ButtonTabs> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: tabs[_tabIndex],
+        body: tabs[widget.tabIndex],
         bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
             canvasColor: const Color.fromRGBO(63, 63, 63, 1),
           ),
           child: BottomNavigationBar(
-            currentIndex: _tabIndex,
+            currentIndex: widget.tabIndex,
             type: BottomNavigationBarType.fixed,
             fixedColor: Colors.orange,
             unselectedItemColor: Colors.grey,
@@ -105,7 +107,7 @@ class _ButtonTabsState extends State<ButtonTabs> {
             ],
             onTap: (index) {
               setState(() {
-                _tabIndex = index;
+                widget.tabIndex = index;
               });
             },
           ),

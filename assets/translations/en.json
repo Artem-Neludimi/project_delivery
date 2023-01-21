@@ -1,6 +1,7 @@
 {
-  "menu": "Menu",
-  "news": "News",
-  "qrCode": "Qr-code",
-  "more": "More"
+  "language":"Українська",
+  "menu": "Меню",
+  "news": "Новини",
+  "qrCode": "Qr-код",
+  "more": "Ще"
 }

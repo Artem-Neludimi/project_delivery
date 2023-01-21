@@ -12,9 +12,17 @@ class LanguagesPages extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ListTile(
-            title: Text('English'),
-            trailing: Icon(Icons.done),
+          InkWell(
+            onTap: () {
+              context.setLocale(const Locale('ru'));
+              Navigator.of(context).pop();
+            },
+            child: ListTile(
+              title: const Text('Русский'),
+              trailing: context.locale == const Locale('ru')
+                  ? const Icon(Icons.done)
+                  : null,
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 12),
@@ -24,22 +32,16 @@ class LanguagesPages extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () => context.setLocale(Locale('ru')),
+            onTap: () {
+              context.setLocale(const Locale('en'));
+              Navigator.of(context).pop();
+            },
             child: ListTile(
-              title: const Text('Русский'),
-              trailing: Icon(Icons.done),
+              title: Text('Українська'),
+              trailing: context.locale == const Locale('en')
+                  ? const Icon(Icons.done)
+                  : null,
             ),
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: Divider(
-              color: Color.fromRGBO(75, 75, 75, 1),
-              height: 5,
-            ),
-          ),
-          ListTile(
-            title: Text('Українська'),
-            trailing: Icon(Icons.done),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 12),
