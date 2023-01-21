@@ -3,5 +3,13 @@
   "menu": "Меню",
   "news": "Новини",
   "qrCode": "Qr-код",
-  "more": "Ще"
+  "more": "Ще",
+  "editProfile": "Редагувати профіль",
+  "favorite": "Обрані товари",
+  "historyOrders": "Історія замовлень",
+  "commentUs": "Залишити відгук",
+  "pushNot": "Push-повідомлення",
+  "languages": "Мова",
+  "logOut": "Вихід",
+  "deleteAcc": "Видалити акаунт"
 }

@@ -3,5 +3,13 @@
   "menu": "Меню",
   "news": "Новости",
   "qrCode": "Qr-код",
-  "more": "Ещё"
+  "more": "Ещё",
+  "editProfile": "Редактировать профиль",
+  "favorite": "Избранное",
+  "historyOrders": "История Заказов",
+  "commentUs": "Оставить отзыв",
+  "pushNot": "Push-уведомления",
+  "languages": "Язык",
+  "logOut": "Выход",
+  "deleteAcc": "Удалить аккаунт"
 }
