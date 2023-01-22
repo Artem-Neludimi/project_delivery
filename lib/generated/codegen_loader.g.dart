@@ -27,7 +27,9 @@ class CodegenLoader extends AssetLoader{
   "pushNot": "Push-повідомлення",
   "languages": "Мова",
   "logOut": "Вихід",
-  "deleteAcc": "Видалити акаунт"
+  "deleteAcc": "Видалити акаунт",
+  "youHaventFavorites": "У вас немає обраних товарів",
+  "youHaventOrders": "У вас ще немає замовлень"
 };
 static const Map<String,dynamic> ru = {
   "language": "Русский",
@@ -42,7 +44,8 @@ static const Map<String,dynamic> ru = {
   "pushNot": "Push-уведомления",
   "languages": "Язык",
   "logOut": "Выход",
-  "deleteAcc": "Удалить аккаунт"
+  "deleteAcc": "Удалить аккаунт",
+  "youHaventFavorites": "У вас нет избранных товаров"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru};
 }

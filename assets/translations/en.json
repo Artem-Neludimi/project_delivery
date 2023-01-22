@@ -11,5 +11,7 @@
   "pushNot": "Push-повідомлення",
   "languages": "Мова",
   "logOut": "Вихід",
-  "deleteAcc": "Видалити акаунт"
+  "deleteAcc": "Видалити акаунт",
+  "youHaventFavorites": "У вас немає обраних товарів",
+  "youHaventOrders": "У вас ще немає замовлень"
 }

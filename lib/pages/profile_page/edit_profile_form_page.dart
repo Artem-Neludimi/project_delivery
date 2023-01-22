@@ -144,11 +144,11 @@ class _EditProfileFormPageState extends State<EditProfileFormPage> {
           alignment: Alignment.center,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Color.fromARGB(255, 43, 43, 43)),
-          margin: EdgeInsets.all(20),
+              color: const Color.fromARGB(255, 43, 43, 43)),
+          margin: const EdgeInsets.all(20),
           child: Text(
             'Save',
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
         ),
       ),

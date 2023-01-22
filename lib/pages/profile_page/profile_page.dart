@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project_delivery/main.dart';
 import 'package:project_delivery/pages/profile_page/edit_profile_form_page.dart';
+import 'package:project_delivery/pages/profile_page/favorites_page.dart';
 import 'package:project_delivery/pages/profile_page/languages_page.dart';
+import 'package:project_delivery/pages/profile_page/orders_history_page.dart';
 
 import '../../generated/locale_keys.g.dart';
 
@@ -47,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
         Container(
           height: 120,
           padding: const EdgeInsets.all(10),
-          color: Color.fromRGBO(29, 29, 29, 1),
+          color: const Color.fromRGBO(29, 29, 29, 1),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -91,10 +93,17 @@ class _ProfilePageState extends State<ProfilePage> {
             Icon(Icons.chevron_right_outlined),
           ),
         ),
-        _tileBuilder(
-          Icon(Icons.favorite_border),
-          LocaleKeys.favorite.tr(),
-          Icon(Icons.chevron_right_outlined),
+        InkWell(
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => FavoritesPage(),
+            ),
+          ),
+          child: _tileBuilder(
+            Icon(Icons.favorite_border),
+            LocaleKeys.favorite.tr(),
+            Icon(Icons.chevron_right_outlined),
+          ),
         ),
         InkWell(
           onTap: () => Navigator.of(context).pushReplacement(
@@ -108,10 +117,17 @@ class _ProfilePageState extends State<ProfilePage> {
             Icon(Icons.chevron_right_outlined),
           ),
         ),
-        _tileBuilder(
-          Icon(Icons.receipt_long),
-          LocaleKeys.historyOrders.tr(),
-          Icon(Icons.chevron_right_outlined),
+        InkWell(
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => OrdersHistoryPage(),
+            ),
+          ),
+          child: _tileBuilder(
+            Icon(Icons.receipt_long),
+            LocaleKeys.historyOrders.tr(),
+            Icon(Icons.chevron_right_outlined),
+          ),
         ),
         _tileBuilder(
           Icon(Icons.thumb_up_outlined),

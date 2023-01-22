@@ -14,5 +14,7 @@ abstract class  LocaleKeys {
   static const languages = 'languages';
   static const logOut = 'logOut';
   static const deleteAcc = 'deleteAcc';
+  static const youHaventFavorites = 'youHaventFavorites';
+  static const youHaventOrders = 'youHaventOrders';
 
 }

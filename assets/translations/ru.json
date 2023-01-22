@@ -11,5 +11,8 @@
   "pushNot": "Push-уведомления",
   "languages": "Язык",
   "logOut": "Выход",
-  "deleteAcc": "Удалить аккаунт"
+  "deleteAcc": "Удалить аккаунт",
+  "youHaventFavorites": "У вас нет избранных товаров",
+  "youHaventOrders": "У вас ещё нет заказов"
+
 }
