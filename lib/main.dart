@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import './generated/locale_keys.g.dart';
 import './generated/codegen_loader.g.dart';
-import './pages/menu_page.dart';
+import 'pages/menu_page/menu_page.dart';
 import './pages/news_page.dart';
 import './pages/profile_page/profile_page.dart';
 import './pages/qr_code.dart';
@@ -21,10 +21,10 @@ void main() async {
           Locale('en'),
           Locale('ru'),
         ],
-        fallbackLocale: Locale('en'),
+        fallbackLocale: const Locale('en'),
         path: 'assets/translations',
-        assetLoader: CodegenLoader(),
-        child: MyApp()),
+        assetLoader: const CodegenLoader(),
+        child: const MyApp()),
   );
 }
 
@@ -39,6 +39,9 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         accentColor: Colors.white,
         canvasColor: Colors.black,
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Colors.white,
+        ),
         textTheme: const TextTheme(
           bodyText2: TextStyle(color: Colors.white),
         ),
@@ -48,6 +51,7 @@ class MyApp extends StatelessWidget {
         ),
         appBarTheme: const AppBarTheme(
           color: Color.fromARGB(232, 20, 20, 20),
+          centerTitle: true,
         ),
       ),
       localizationsDelegates: context.localizationDelegates,
