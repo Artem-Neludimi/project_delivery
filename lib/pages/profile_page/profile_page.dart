@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:project_delivery/pages/profile_page/languages_pages.dart';
+import 'package:project_delivery/main.dart';
+import 'package:project_delivery/pages/profile_page/edit_profile_form_page.dart';
+import 'package:project_delivery/pages/profile_page/languages_page.dart';
 
 import '../../generated/locale_keys.g.dart';
 
@@ -39,12 +41,12 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SizedBox(
-          height: 20,
+        const SizedBox(
+          height: 5,
         ),
         Container(
           height: 120,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           color: Color.fromRGBO(29, 29, 29, 1),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,36 +78,51 @@ class _ProfilePageState extends State<ProfilePage> {
             ],
           ),
         ),
-        _tileBuilder(
-          Icon(Icons.edit_outlined),
-          'qqq',
-          Icon(Icons.chevron_right_outlined),
+        InkWell(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditProfileFormPage(),
+            ),
+          ),
+          child: _tileBuilder(
+            Icon(Icons.edit_outlined),
+            LocaleKeys.editProfile.tr(),
+            Icon(Icons.chevron_right_outlined),
+          ),
         ),
         _tileBuilder(
           Icon(Icons.favorite_border),
-          'qqq',
+          LocaleKeys.favorite.tr(),
           Icon(Icons.chevron_right_outlined),
         ),
-        _tileBuilder(
-          Icon(Icons.newspaper),
-          'qqq',
-          Icon(Icons.chevron_right_outlined),
+        InkWell(
+          onTap: () => Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (context) => BottomTabs(1),
+            ),
+          ),
+          child: _tileBuilder(
+            Icon(Icons.newspaper),
+            LocaleKeys.news.tr(),
+            Icon(Icons.chevron_right_outlined),
+          ),
         ),
         _tileBuilder(
           Icon(Icons.receipt_long),
-          'qqq',
+          LocaleKeys.historyOrders.tr(),
           Icon(Icons.chevron_right_outlined),
         ),
         _tileBuilder(
           Icon(Icons.thumb_up_outlined),
-          'qqq',
+          LocaleKeys.commentUs.tr(),
           Icon(Icons.chevron_right_outlined),
         ),
         ListTile(
           textColor: Colors.white,
           iconColor: Colors.grey,
-          leading: Icon(Icons.notifications_outlined),
-          title: Text('qqq'),
+          leading: const Icon(Icons.notifications_outlined),
+          title: Text(LocaleKeys.pushNot.tr()),
           trailing: Switch(onChanged: (bool value) {}, value: true),
         ),
         const Padding(
@@ -115,23 +132,23 @@ class _ProfilePageState extends State<ProfilePage> {
             height: 5,
           ),
         ),
-        GestureDetector(
+        InkWell(
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => LanguagesPages(),
+                builder: (context) => const LanguagesPage(),
               ),
             ).then((value) => setState(() {}));
           },
           child: ListTile(
             textColor: Colors.white,
             iconColor: Colors.grey,
-            leading: Icon(Icons.language),
-            title: Text('qqq'),
+            leading: const Icon(Icons.language),
+            title: Text(LocaleKeys.languages.tr()),
             trailing: Text(
               LocaleKeys.language.tr(),
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
           ),
         ),
@@ -145,8 +162,8 @@ class _ProfilePageState extends State<ProfilePage> {
         ListTile(
           textColor: Colors.white,
           iconColor: Colors.grey,
-          leading: Icon(Icons.logout),
-          title: Text('qqq'),
+          leading: const Icon(Icons.logout),
+          title: Text(LocaleKeys.logOut.tr()),
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 12),
@@ -158,8 +175,8 @@ class _ProfilePageState extends State<ProfilePage> {
         ListTile(
           textColor: Colors.red,
           iconColor: Colors.red,
-          leading: Icon(Icons.delete_outline),
-          title: Text('qqq'),
+          leading: const Icon(Icons.delete_outline),
+          title: Text(LocaleKeys.deleteAcc.tr()),
         ),
       ],
     );

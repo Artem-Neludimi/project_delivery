@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:project_delivery/generated/locale_keys.g.dart';
 
-class LanguagesPages extends StatelessWidget {
-  const LanguagesPages({super.key});
+class LanguagesPage extends StatelessWidget {
+  const LanguagesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('lang'),
+        title: Text(
+          LocaleKeys.languages.tr(),
+        ),
       ),
       body: Column(
         children: [

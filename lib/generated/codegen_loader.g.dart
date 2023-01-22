@@ -19,14 +19,30 @@ class CodegenLoader extends AssetLoader{
   "menu": "Меню",
   "news": "Новини",
   "qrCode": "Qr-код",
-  "more": "Ще"
+  "more": "Ще",
+  "editProfile": "Редагувати профіль",
+  "favorite": "Обрані товари",
+  "historyOrders": "Історія замовлень",
+  "commentUs": "Залишити відгук",
+  "pushNot": "Push-повідомлення",
+  "languages": "Мова",
+  "logOut": "Вихід",
+  "deleteAcc": "Видалити акаунт"
 };
 static const Map<String,dynamic> ru = {
   "language": "Русский",
   "menu": "Меню",
   "news": "Новости",
   "qrCode": "Qr-код",
-  "more": "Ещё"
+  "more": "Ещё",
+  "editProfile": "Редактировать профиль",
+  "favorite": "Избранное",
+  "historyOrders": "История Заказов",
+  "commentUs": "Оставить отзыв",
+  "pushNot": "Push-уведомления",
+  "languages": "Язык",
+  "logOut": "Выход",
+  "deleteAcc": "Удалить аккаунт"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru};
 }
