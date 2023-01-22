@@ -5,6 +5,7 @@ class MenuItem {
   final String title;
   final double price;
   final int weight;
+  final String type;
   final Image image;
   final int quantity;
   final bool isFavorite;
@@ -16,6 +17,7 @@ class MenuItem {
     required this.title,
     required this.price,
     required this.weight,
+    required this.type,
     required this.image,
     required this.quantity,
     required this.isFavorite,
