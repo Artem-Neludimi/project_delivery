@@ -53,21 +53,21 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: ButtonTabs(0),
+      home: BottomTabs(0),
     );
   }
 }
 
-class ButtonTabs extends StatefulWidget {
+class BottomTabs extends StatefulWidget {
   int tabIndex;
 
-  ButtonTabs(this.tabIndex);
+  BottomTabs(this.tabIndex);
 
   @override
-  State<ButtonTabs> createState() => _ButtonTabsState();
+  State<BottomTabs> createState() => _BottomTabsState();
 }
 
-class _ButtonTabsState extends State<ButtonTabs> {
+class _BottomTabsState extends State<BottomTabs> {
   final tabs = [
     MenuPage(),
     NewsPage(),
