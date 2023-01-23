@@ -13,5 +13,6 @@
   "logOut": "Вихід",
   "deleteAcc": "Видалити акаунт",
   "youHaventFavorites": "У вас немає обраних товарів",
-  "youHaventOrders": "У вас ще немає замовлень"
+  "youHaventOrders": "У вас ще немає замовлень",
+  "menuShops":"Меню магазина"
 }

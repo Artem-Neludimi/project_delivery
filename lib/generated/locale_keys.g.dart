@@ -16,5 +16,6 @@ abstract class  LocaleKeys {
   static const deleteAcc = 'deleteAcc';
   static const youHaventFavorites = 'youHaventFavorites';
   static const youHaventOrders = 'youHaventOrders';
+  static const menuShops = 'menuShops';
 
 }
