@@ -1,0 +1,19 @@
+{
+  "language":"Українська",
+  "menu": "Меню",
+  "news": "Новини",
+  "qrCode": "Qr-код",
+  "more": "Ще",
+  "cart": "Кошик",
+  "editProfile": "Редагувати профіль",
+  "favorite": "Обрані товари",
+  "historyOrders": "Історія замовлень",
+  "commentUs": "Залишити відгук",
+  "pushNot": "Push-повідомлення",
+  "languages": "Мова",
+  "logOut": "Вихід",
+  "deleteAcc": "Видалити акаунт",
+  "youHaventFavorites": "У вас немає обраних товарів",
+  "youHaventOrders": "У вас ще немає замовлень",
+  "menuShops":"Меню магазина"
+}
