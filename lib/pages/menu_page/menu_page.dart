@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:project_delivery/pages/menu_page/menu_type_page.dart';
 import 'package:project_delivery/providers/menu.dart';
 import 'package:provider/provider.dart';
 
@@ -110,34 +110,50 @@ class TypeMenuListItem extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index == 0) {
             return Container(
-              child: Text(LocaleKeys.menuShops.tr()),
+              child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 6,
+                  ),
+                  child: Text(
+                    LocaleKeys.menuShops.tr(),
+                    style: TextStyle(fontSize: 20),
+                  )),
             );
           } else {
-            return Stack(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  child: Image.network(
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg/1280px-Various_sushi%2C_beautiful_October_night_at_midnight.jpg',
-                    fit: BoxFit.cover,
-                    height: 120,
-                    width: MediaQuery.of(context).size.width,
-                    alignment: Alignment.bottomCenter,
-                  ),
-                ),
-                Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: Container(
-                      alignment: Alignment.bottomRight,
-                      width: 150,
-                      child: Text(
-                        list[index - 1],
-                        overflow: TextOverflow.fade,
+            return GestureDetector(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => MenuTypePage(menuType: list[index - 1]),
+              )),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg/1280px-Various_sushi%2C_beautiful_October_night_at_midnight.jpg',
+                        fit: BoxFit.cover,
+                        height: 120,
+                        width: MediaQuery.of(context).size.width,
+                        alignment: Alignment.bottomCenter,
                       ),
-                    )),
-              ],
+                    ),
+                  ),
+                  Positioned(
+                      bottom: 10,
+                      right: 10,
+                      child: Container(
+                        alignment: Alignment.bottomRight,
+                        width: 150,
+                        child: Text(
+                          list[index - 1],
+                          overflow: TextOverflow.fade,
+                        ),
+                      )),
+                ],
+              ),
             );
           }
         });
