@@ -6,6 +6,7 @@ abstract class  LocaleKeys {
   static const news = 'news';
   static const qrCode = 'qrCode';
   static const more = 'more';
+  static const cart = 'cart';
   static const editProfile = 'editProfile';
   static const favorite = 'favorite';
   static const historyOrders = 'historyOrders';

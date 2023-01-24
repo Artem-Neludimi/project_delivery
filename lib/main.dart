@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_delivery/pages/cart_page.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -68,7 +69,7 @@ class MyApp extends StatelessWidget {
             textColor: Colors.white,
           ),
           appBarTheme: const AppBarTheme(
-            color: Color.fromARGB(232, 20, 20, 20),
+            color: Color.fromRGBO(63, 63, 63, 1),
             centerTitle: true,
           ),
         ),
@@ -96,6 +97,7 @@ class _BottomTabsState extends State<BottomTabs> {
     const NewsPage(),
     const QrCodePage(),
     const ProfilePage(),
+    const CartPage(),
   ];
 
   @override
@@ -126,7 +128,11 @@ class _BottomTabsState extends State<BottomTabs> {
               BottomNavigationBarItem(
                 label: LocaleKeys.more.tr(),
                 icon: const Icon(Icons.person_outline),
-              )
+              ),
+              BottomNavigationBarItem(
+                label: LocaleKeys.cart.tr(),
+                icon: const Icon(Icons.shopping_cart_outlined),
+              ),
             ],
             onTap: (index) {
               setState(() {
