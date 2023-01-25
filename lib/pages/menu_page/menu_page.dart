@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project_delivery/pages/menu_page/menu_type_page.dart';
 import 'package:project_delivery/providers/menu.dart';
+import 'package:project_delivery/providers/menu_type.dart';
 import 'package:provider/provider.dart';
 
 import '../../generated/locale_keys.g.dart';
@@ -61,7 +62,14 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    final typesList = Provider.of<Menu>(context).types;
+    final typesList = Provider.of<MenuType>(context)
+        .types
+        .map((types) => types.title)
+        .toList();
+    final imagesList = Provider.of<MenuType>(context)
+        .types
+        .map((images) => images.imageURL)
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -90,23 +98,27 @@ class _MenuPageState extends State<MenuPage> {
                 ]),
       body: _searchBoolean
           ? _searchListView(typesList)
-          : TypeMenuListItem(list: typesList),
+          : TypeMenuListItem(
+              typesList: typesList,
+              imagesList: imagesList,
+            ),
     );
   }
 }
 
 class TypeMenuListItem extends StatelessWidget {
+  final List<String> typesList;
+  final List<String> imagesList;
   const TypeMenuListItem({
     Key? key,
-    required this.list,
+    required this.typesList,
+    required this.imagesList,
   }) : super(key: key);
-
-  final List<String> list;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: list.length + 1,
+        itemCount: typesList.length + 1,
         itemBuilder: (context, index) {
           if (index == 0) {
             return Container(
@@ -122,9 +134,11 @@ class TypeMenuListItem extends StatelessWidget {
             );
           } else {
             return GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => MenuTypePage(menuType: list[index - 1]),
-              )),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => MenuTypePage(menuType: typesList[index - 1]),
+                ),
+              ),
               child: Stack(
                 children: [
                   Padding(
@@ -133,7 +147,7 @@ class TypeMenuListItem extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
-                        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg/1280px-Various_sushi%2C_beautiful_October_night_at_midnight.jpg',
+                        imagesList[index - 1],
                         fit: BoxFit.cover,
                         height: 120,
                         width: MediaQuery.of(context).size.width,
@@ -148,7 +162,7 @@ class TypeMenuListItem extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         width: 150,
                         child: Text(
-                          list[index - 1],
+                          typesList[index - 1],
                           overflow: TextOverflow.fade,
                         ),
                       )),

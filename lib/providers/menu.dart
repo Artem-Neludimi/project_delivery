@@ -180,28 +180,20 @@ class Menu with ChangeNotifier {
       modifications: [false],
     ),
   ];
-  List<String> _types = [
-    'Суши',
-    'Пицца',
-    'type 3',
-    'type 4',
-    'type 5',
-    'type 6',
-    'type 7',
-    'type 8',
-    'type 9',
-    'type 10',
-  ];
 
-  List<MenuItem> get items {
-    return [..._items];
+  List<MenuItem> items = [];
+
+  void specifyMenu(String type) {
+    for (var i = 0; i < _items.length - 1; i++) {
+      if (_items[i].type == type) {
+        items.add(_items[i]);
+      }
+    }
+    notifyListeners();
   }
 
-  List<String> get types {
-    return [..._types];
-  }
-
-  int? get itemCount {
-    _items.length;
+  void clearMenu() {
+    items = [];
+    notifyListeners();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_delivery/pages/cart_page.dart';
+import 'package:project_delivery/providers/menu_type.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -39,6 +40,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (c) => Menu(),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => MenuType(),
         ),
       ],
       child: MaterialApp(
