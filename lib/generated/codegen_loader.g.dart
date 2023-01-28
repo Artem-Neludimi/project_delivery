@@ -31,7 +31,11 @@ class CodegenLoader extends AssetLoader{
   "deleteAcc": "Видалити акаунт",
   "youHaventFavorites": "У вас немає обраних товарів",
   "youHaventOrders": "У вас ще немає замовлень",
-  "menuShops": "Меню магазина"
+  "menuShops": "Меню магазина",
+  "energyValue": "Енергетична цінність",
+  "protein": "Білки",
+  "fats": "Жири",
+  "carbohydrates": "Вуглеводи"
 };
 static const Map<String,dynamic> ru = {
   "language": "Русский",
@@ -50,7 +54,11 @@ static const Map<String,dynamic> ru = {
   "deleteAcc": "Удалить аккаунт",
   "youHaventFavorites": "У вас нет избранных товаров",
   "youHaventOrders": "У вас ещё нет заказов",
-  "menuShops": "Меню магазина"
+  "menuShops": "Меню магазина",
+  "energyValue": "Энергетическая ценность",
+  "protein": "Белки",
+  "fats": "Жиры",
+  "carbohydrates": "Углеводы"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru};
 }

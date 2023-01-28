@@ -94,7 +94,7 @@ class _MenuPageState extends State<MenuPage> {
       body: _searchBoolean
           ? SearchListView(
               searchIndexList: searchIndexList, allItemsList: allItemsList)
-          : TypeMenuListItem(
+          : TypeMenuItemList(
               typesList: typesList,
               imagesList: imagesList,
             ),
@@ -125,16 +125,17 @@ class SearchListView extends StatelessWidget {
                     ))),
             child: ListTile(
               title: Text(allItemsList[index].title),
+              trailing: Image.network(allItemsList[index].imageURL),
             ),
           );
         });
   }
 }
 
-class TypeMenuListItem extends StatelessWidget {
+class TypeMenuItemList extends StatelessWidget {
   final List<String> typesList;
   final List<String> imagesList;
-  const TypeMenuListItem({
+  const TypeMenuItemList({
     Key? key,
     required this.typesList,
     required this.imagesList,
@@ -147,16 +148,18 @@ class TypeMenuListItem extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index == 0) {
             return Container(
-              child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 6,
-                  ),
-                  child: Text(
-                    LocaleKeys.menuShops.tr(),
-                    style: const TextStyle(fontSize: 20),
-                  )),
-            );
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 6,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      LocaleKeys.menuShops.tr(),
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ));
           } else {
             return GestureDetector(
               onTap: () => Navigator.of(context).push(

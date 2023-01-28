@@ -4,6 +4,7 @@ import 'package:project_delivery/widgets/add_or_remove_from_cart.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/menu_favorites.dart';
+import '../../widgets/info_and_like_buttons.dart';
 import '/providers/menu.dart';
 
 class MenuItemPage extends StatelessWidget {
@@ -61,31 +62,9 @@ class MenuItemPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Row(children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.info_outline,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Provider.of<MenuFavorites>(context, listen: false)
-                          .toggleFavorites(menuItem);
-                    },
-                    icon: Provider.of<MenuFavorites>(context, listen: true)
-                            .isFavorite(menuItem)
-                        ? const Icon(
-                            Icons.favorite,
-                            color: Colors.orange,
-                          )
-                        : const Icon(
-                            Icons.favorite_border,
-                            color: Colors.grey,
-                          ),
-                  ),
-                ]),
+                InfoAndLikeButtons(
+                  menuItem: menuItem,
+                )
               ],
             ),
           ),

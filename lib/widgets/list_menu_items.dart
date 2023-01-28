@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/menu.dart';
 import 'add_or_remove_from_cart.dart';
+import 'info_and_like_buttons.dart';
 
 class ListMenuItems extends StatelessWidget {
   const ListMenuItems({
@@ -64,9 +65,8 @@ class ListMenuItems extends StatelessWidget {
                     Positioned(
                       right: 0,
                       top: 0,
-                      child: InfoAndLikeButton(
-                        menuTypeItems: menuTypeItems,
-                        index: index,
+                      child: InfoAndLikeButtons(
+                        menuItem: menuTypeItems[index],
                       ),
                     ),
                     Positioned(
@@ -153,48 +153,6 @@ class ListMenuItems extends StatelessWidget {
           ],
         );
       },
-    );
-  }
-}
-
-class InfoAndLikeButton extends StatelessWidget {
-  final List<MenuItem> menuTypeItems;
-  final int index;
-
-  const InfoAndLikeButton({
-    super.key,
-    required this.menuTypeItems,
-    required this.index,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.info_outline,
-            color: Colors.grey,
-          ),
-        ),
-        IconButton(
-          onPressed: () {
-            Provider.of<MenuFavorites>(context, listen: false)
-                .toggleFavorites(menuTypeItems[index]);
-          },
-          icon: Provider.of<MenuFavorites>(context, listen: true)
-                  .isFavorite(menuTypeItems[index])
-              ? const Icon(
-                  Icons.favorite,
-                  color: Colors.orange,
-                )
-              : const Icon(
-                  Icons.favorite_border,
-                  color: Colors.grey,
-                ),
-        ),
-      ],
     );
   }
 }

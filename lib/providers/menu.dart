@@ -10,17 +10,25 @@ class MenuItem {
   final String type;
   final String imageURL;
   final int quantity;
+  final int? energyValue;
+  final int? protein;
+  final int? fats;
+  final int? carbohydrates;
 
   MenuItem({
     required this.id,
     required this.title,
     required this.price,
-    required this.oldPrice,
+    this.oldPrice,
     required this.weight,
     required this.ingredients,
     required this.type,
     required this.imageURL,
     required this.quantity,
+    this.energyValue,
+    this.protein,
+    this.fats,
+    this.carbohydrates,
   });
 }
 
@@ -39,6 +47,7 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://omnomnom.dp.ua/image/cache/catalog/pizza_new/new/img_0692-500x500.jpg',
       quantity: 1,
+      energyValue: 1000,
     ),
     MenuItem(
       id: 'm2',
@@ -95,7 +104,6 @@ class Menu with ChangeNotifier {
       id: 'm6',
       title: 'Суши',
       price: 100,
-      oldPrice: null,
       weight: 400,
       ingredients:
           'рыба, рыба, рыба, рыба, рыба, рыба, рыба, рыба, рыба, рыба, рыба, рыба, ',
