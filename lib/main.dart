@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_delivery/pages/cart_page.dart';
+import 'package:project_delivery/providers/menu_favorites.dart';
 import 'package:project_delivery/providers/menu_type.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -44,10 +45,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (c) => MenuType(),
         ),
+        ChangeNotifierProvider(
+          create: (c) => MenuFavorites(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Shopping Cart Demo',
         theme: ThemeData(
+          useMaterial3: false,
           primaryColor: Colors.black,
           accentColor: Colors.white,
           canvasColor: Colors.black,
@@ -56,17 +61,17 @@ class MyApp extends StatelessWidget {
             cursorColor: Colors.white,
           ),
           textTheme: const TextTheme(
-            bodyText1: TextStyle(color: Colors.white),
-            bodyText2: TextStyle(color: Colors.white),
-            button: TextStyle(color: Colors.white),
-            caption: TextStyle(color: Colors.white),
-            subtitle1: TextStyle(color: Colors.white),
-            headline1: TextStyle(color: Colors.white),
-            headline2: TextStyle(color: Colors.white),
-            headline3: TextStyle(color: Colors.white),
-            headline4: TextStyle(color: Colors.white),
-            headline5: TextStyle(color: Colors.white),
-            headline6: TextStyle(color: Colors.white),
+            bodyLarge: TextStyle(color: Colors.white),
+            bodyMedium: TextStyle(color: Colors.white),
+            labelLarge: TextStyle(color: Colors.white),
+            bodySmall: TextStyle(color: Colors.white),
+            titleMedium: TextStyle(color: Colors.white),
+            displayLarge: TextStyle(color: Colors.white),
+            displayMedium: TextStyle(color: Colors.white),
+            displaySmall: TextStyle(color: Colors.white),
+            headlineMedium: TextStyle(color: Colors.white),
+            headlineSmall: TextStyle(color: Colors.white),
+            titleLarge: TextStyle(color: Colors.white),
           ),
           listTileTheme: const ListTileThemeData(
             iconColor: Colors.grey,

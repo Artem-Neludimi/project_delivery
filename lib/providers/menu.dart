@@ -10,8 +10,6 @@ class MenuItem {
   final String type;
   final String imageURL;
   final int quantity;
-  final bool isFavorite;
-  final List<bool> modifications;
 
   MenuItem({
     required this.id,
@@ -23,12 +21,11 @@ class MenuItem {
     required this.type,
     required this.imageURL,
     required this.quantity,
-    required this.isFavorite,
-    required this.modifications,
   });
 }
 
 class Menu with ChangeNotifier {
+  // ignore: prefer_final_fields
   List<MenuItem> _items = [
     MenuItem(
       id: 'm1',
@@ -42,26 +39,22 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://omnomnom.dp.ua/image/cache/catalog/pizza_new/new/img_0692-500x500.jpg',
       quantity: 1,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm2',
       title: 'Суши',
       price: 100,
-      oldPrice: null,
+      oldPrice: 300,
       weight: 400,
       ingredients: 'рыба, рыба, рыба, рыба, рыба.',
       type: 'Суши',
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
-      quantity: 1,
-      isFavorite: false,
-      modifications: [false],
+      quantity: 10,
     ),
     MenuItem(
       id: 'm3',
-      title: 'Суши',
+      title: 'Авторский горячий рол око дракона',
       price: 100,
       oldPrice: 200,
       weight: 400,
@@ -71,8 +64,6 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 1,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm4',
@@ -86,8 +77,6 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 1,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm5',
@@ -101,8 +90,6 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 8,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm6',
@@ -116,8 +103,6 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 8,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm7',
@@ -131,8 +116,6 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 10,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm8',
@@ -146,8 +129,6 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 1,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm9',
@@ -161,8 +142,6 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 1,
-      isFavorite: false,
-      modifications: [false],
     ),
     MenuItem(
       id: 'm10',
@@ -176,12 +155,14 @@ class Menu with ChangeNotifier {
       imageURL:
           'https://vkusno-dom.com/wp-content/uploads/2020/11/img_8989-2-1024x1024.jpg',
       quantity: 1,
-      isFavorite: false,
-      modifications: [false],
     ),
   ];
 
   List<MenuItem> items = [];
+
+  List<MenuItem> get allItems {
+    return [..._items];
+  }
 
   void specifyMenu(String type) {
     for (var i = 0; i < _items.length - 1; i++) {

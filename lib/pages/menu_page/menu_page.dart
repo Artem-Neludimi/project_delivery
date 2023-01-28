@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:project_delivery/pages/menu_page/menu_item_page.dart';
 import 'package:project_delivery/pages/menu_page/menu_type_page.dart';
 import 'package:project_delivery/providers/menu.dart';
 import 'package:project_delivery/providers/menu_type.dart';
@@ -18,20 +19,21 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   bool _searchBoolean = false;
-  List<int> _searchIndexList = [];
+  List<int> searchIndexList = [];
 
   Widget _searchTextField(List<String> list) {
     return TextField(
       onChanged: (String s) {
         setState(() {
-          _searchIndexList = [];
+          searchIndexList = [];
           for (int i = 0; i < list.length; i++) {
             if (list[i].contains(s)) {
-              _searchIndexList.add(i);
+              searchIndexList.add(i);
             }
           }
         });
       },
+      textCapitalization: TextCapitalization.words,
       autofocus: true,
       style: const TextStyle(
         fontSize: 20,
@@ -44,38 +46,31 @@ class _MenuPageState extends State<MenuPage> {
             UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
         hintText: 'Search',
         hintStyle: TextStyle(
-          color: Colors.white60,
           fontSize: 20,
         ),
       ),
     );
   }
 
-  Widget _searchListView(List<String> list) {
-    return ListView.builder(
-        itemCount: _searchIndexList.length,
-        itemBuilder: (ctx, index) {
-          index = _searchIndexList[index];
-          return ListTile(title: Text(list[index]));
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     final typesList = Provider.of<MenuType>(context)
         .types
-        .map((types) => types.title)
+        .map((elements) => elements.title)
         .toList();
     final imagesList = Provider.of<MenuType>(context)
         .types
-        .map((images) => images.imageURL)
+        .map((elements) => elements.imageURL)
         .toList();
+    final allItemsList = Provider.of<Menu>(context).allItems;
+    final allItemsListTitle =
+        allItemsList.map((elements) => elements.title).toList();
 
     return Scaffold(
       appBar: AppBar(
           title: !_searchBoolean
               ? const Text('Ваше Заведение')
-              : _searchTextField(typesList),
+              : _searchTextField(allItemsListTitle),
           actions: !_searchBoolean
               ? [
                   IconButton(
@@ -83,7 +78,7 @@ class _MenuPageState extends State<MenuPage> {
                       onPressed: () {
                         setState(() {
                           _searchBoolean = true;
-                          _searchIndexList = [];
+                          searchIndexList = [];
                         });
                       })
                 ]
@@ -97,12 +92,42 @@ class _MenuPageState extends State<MenuPage> {
                       })
                 ]),
       body: _searchBoolean
-          ? _searchListView(typesList)
+          ? SearchListView(
+              searchIndexList: searchIndexList, allItemsList: allItemsList)
           : TypeMenuListItem(
               typesList: typesList,
               imagesList: imagesList,
             ),
     );
+  }
+}
+
+class SearchListView extends StatelessWidget {
+  final List<int> searchIndexList;
+  final List<MenuItem> allItemsList;
+
+  const SearchListView({
+    super.key,
+    required this.searchIndexList,
+    required this.allItemsList,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: searchIndexList.length,
+        itemBuilder: (ctx, index) {
+          index = searchIndexList[index];
+          return GestureDetector(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => MenuItemPage(
+                      menuItem: allItemsList[index],
+                    ))),
+            child: ListTile(
+              title: Text(allItemsList[index].title),
+            ),
+          );
+        });
   }
 }
 
@@ -129,7 +154,7 @@ class TypeMenuListItem extends StatelessWidget {
                   ),
                   child: Text(
                     LocaleKeys.menuShops.tr(),
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   )),
             );
           } else {
