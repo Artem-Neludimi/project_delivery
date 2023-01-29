@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_delivery/providers/menu.dart';
+import 'package:project_delivery/providers/menu/menu.dart';
 import 'package:provider/provider.dart';
 
 import '../../widgets/list_menu_items.dart';
@@ -18,7 +18,7 @@ class MenuTypePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(menuType),
       ),
-      body: ListMenuItems(menuTypeItems: menuTypeItems),
+      body: ListMenuItems(menuItems: menuTypeItems),
     );
   }
 }

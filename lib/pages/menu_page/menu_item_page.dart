@@ -3,9 +3,9 @@ import 'package:flutter_dash/flutter_dash.dart';
 import 'package:project_delivery/widgets/add_or_remove_from_cart.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/menu_favorites.dart';
+import '../../providers/menu/menu_favorites.dart';
 import '../../widgets/info_and_like_buttons.dart';
-import '/providers/menu.dart';
+import '../../providers/menu/menu.dart';
 
 class MenuItemPage extends StatelessWidget {
   final MenuItem menuItem;
@@ -101,7 +101,7 @@ class MenuItemPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const AddOrRemoveFromCart(),
+                AddOrRemoveFromCart(menuItem: menuItem),
               ],
             ),
           ),

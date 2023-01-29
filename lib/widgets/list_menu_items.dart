@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dash/flutter_dash.dart';
 import 'package:project_delivery/pages/menu_page/menu_item_page.dart';
-import 'package:project_delivery/providers/menu_favorites.dart';
+import 'package:project_delivery/providers/menu/menu_favorites.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/menu.dart';
+import '../providers/menu/menu.dart';
 import 'add_or_remove_from_cart.dart';
 import 'info_and_like_buttons.dart';
 
 class ListMenuItems extends StatelessWidget {
   const ListMenuItems({
     super.key,
-    required this.menuTypeItems,
+    required this.menuItems,
   });
 
-  final List<MenuItem> menuTypeItems;
+  final List<MenuItem> menuItems;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: menuTypeItems.length,
+      itemCount: menuItems.length,
       itemBuilder: (_, index) {
         const textStyle = TextStyle(
           color: Colors.grey,
@@ -30,7 +30,7 @@ class ListMenuItems extends StatelessWidget {
             GestureDetector(
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => MenuItemPage(menuItem: menuTypeItems[index]),
+                  builder: (_) => MenuItemPage(menuItem: menuItems[index]),
                 ),
               ),
               child: SizedBox(
@@ -39,7 +39,7 @@ class ListMenuItems extends StatelessWidget {
                 child: Stack(
                   children: [
                     Image.network(
-                      menuTypeItems[index].imageURL,
+                      menuItems[index].imageURL,
                       height: 140,
                       width: 100,
                       fit: BoxFit.cover,
@@ -52,7 +52,7 @@ class ListMenuItems extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            menuTypeItems[index].title,
+                            menuItems[index].title,
                             overflow: TextOverflow.fade,
                             maxLines: 2,
                             style: const TextStyle(
@@ -66,7 +66,7 @@ class ListMenuItems extends StatelessWidget {
                       right: 0,
                       top: 0,
                       child: InfoAndLikeButtons(
-                        menuItem: menuTypeItems[index],
+                        menuItem: menuItems[index],
                       ),
                     ),
                     Positioned(
@@ -77,16 +77,16 @@ class ListMenuItems extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            menuTypeItems[index].ingredients,
+                            menuItems[index].ingredients,
                             overflow: TextOverflow.fade,
                             style: const TextStyle(
                                 color: Colors.grey, fontSize: 11),
                             maxLines: 2,
                           ),
-                          menuTypeItems[index].quantity == 1
+                          menuItems[index].quantity == 1
                               ? const SizedBox.shrink()
                               : Text(
-                                  '${menuTypeItems[index].quantity} шт',
+                                  '${menuItems[index].quantity} шт',
                                   style: const TextStyle(color: Colors.grey),
                                 ),
                         ],
@@ -98,14 +98,14 @@ class ListMenuItems extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          menuTypeItems[index].oldPrice == null
+                          menuItems[index].oldPrice == null
                               ? const SizedBox.shrink()
                               : Text(
-                                  '${menuTypeItems[index].oldPrice} ${String.fromCharCode(0x20B4)}',
+                                  '${menuItems[index].oldPrice} ${String.fromCharCode(0x20B4)}',
                                   style: textStyle,
                                 ),
                           Text(
-                            '${menuTypeItems[index].price} ${String.fromCharCode(0x20B4)}',
+                            '${menuItems[index].price} ${String.fromCharCode(0x20B4)}',
                             style: TextStyle(fontSize: 17),
                           ),
                         ],
@@ -126,7 +126,7 @@ class ListMenuItems extends StatelessWidget {
                             width: 10,
                           ),
                           Text(
-                            '${menuTypeItems[index].weight}г',
+                            '${menuItems[index].weight}г',
                             style: const TextStyle(
                               color: Colors.grey,
                             ),
@@ -145,10 +145,10 @@ class ListMenuItems extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               right: 10,
               bottom: 10,
-              child: AddOrRemoveFromCart(),
+              child: AddOrRemoveFromCart(menuItem: menuItems[index]),
             ),
           ],
         );

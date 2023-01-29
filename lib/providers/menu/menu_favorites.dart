@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_delivery/providers/menu.dart';
+import 'package:project_delivery/providers/menu/menu.dart';
 
 class MenuFavorites with ChangeNotifier {
   List<MenuItem> _items = [];

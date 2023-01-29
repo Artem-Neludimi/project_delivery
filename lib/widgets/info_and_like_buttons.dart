@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../generated/locale_keys.g.dart';
-import '../providers/menu.dart';
-import '../providers/menu_favorites.dart';
+import '../providers/menu/menu.dart';
+import '../providers/menu/menu_favorites.dart';
 
 class InfoAndLikeButtons extends StatelessWidget {
   final MenuItem menuItem;

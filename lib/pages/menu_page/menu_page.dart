@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:project_delivery/pages/menu_page/menu_item_page.dart';
 import 'package:project_delivery/pages/menu_page/menu_type_page.dart';
-import 'package:project_delivery/providers/menu.dart';
-import 'package:project_delivery/providers/menu_type.dart';
+import 'package:project_delivery/providers/menu/menu.dart';
+import 'package:project_delivery/providers/menu/menu_type.dart';
 import 'package:provider/provider.dart';
 
 import '../../generated/locale_keys.g.dart';
