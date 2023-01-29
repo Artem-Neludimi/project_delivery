@@ -22,5 +22,11 @@ abstract class  LocaleKeys {
   static const protein = 'protein';
   static const fats = 'fats';
   static const carbohydrates = 'carbohydrates';
+  static const save = 'save';
+  static const sumTotal = 'sumTotal';
+  static const makeAnOrder = 'makeAnOrder';
+  static const deleteProducts = 'deleteProducts';
+  static const delete = 'delete';
+  static const cancel = 'cancel';
 
 }

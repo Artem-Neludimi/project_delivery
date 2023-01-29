@@ -19,6 +19,11 @@
   "energyValue":"Енергетична цінність",
   "protein":"Білки",
   "fats":"Жири",
-  "carbohydrates":"Вуглеводи"
-
+  "carbohydrates":"Вуглеводи",
+  "save":"Зберегти",
+  "sumTotal":"Загальна сума",
+  "makeAnOrder":"Оформити замовлення",
+  "deleteProducts":"Видалити всі продукти з кошика?",
+  "delete":"Видалити",
+  "cancel":"Відмінити"
 }

@@ -40,7 +40,9 @@ class AddOrRemoveFromCart extends StatelessWidget {
             ),
           ),
           Text(
-            Provider.of<Cart>(context).theSameProductQuantity(menuItem),
+            Provider.of<Cart>(context)
+                .theSameProductQuantity(menuItem)
+                .toString(),
             style: const TextStyle(color: Colors.orange, fontSize: 20),
           ),
           Expanded(

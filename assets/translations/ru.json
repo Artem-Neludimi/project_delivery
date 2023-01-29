@@ -19,5 +19,11 @@
   "energyValue":"Энергетическая ценность",
   "protein":"Белки",
   "fats":"Жиры",
-  "carbohydrates":"Углеводы"
+  "carbohydrates":"Углеводы",
+  "save":"Сохранить",
+  "sumTotal":"Общая сумма",
+  "makeAnOrder":"Оформить заказ",
+  "deleteProducts":"Удалить все продукты с корзины",
+  "delete":"Удалить",
+  "cancel":"Отменить"
 }

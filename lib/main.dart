@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_delivery/pages/cart_page.dart';
+import 'package:project_delivery/pages/cart_page/cart_page.dart';
 import 'package:project_delivery/providers/cart/cart.dart';
 import 'package:project_delivery/providers/menu/menu_favorites.dart';
 import 'package:project_delivery/providers/menu/menu_type.dart';
@@ -10,7 +10,7 @@ import 'providers/menu/menu.dart';
 import './generated/locale_keys.g.dart';
 import './generated/codegen_loader.g.dart';
 import './pages/menu_page/menu_page.dart';
-import './pages/news_page.dart';
+import 'pages/news_page/news_page.dart';
 import './pages/profile_page/profile_page.dart';
 import './pages/qr_code.dart';
 
