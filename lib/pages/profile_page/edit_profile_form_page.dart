@@ -136,23 +136,6 @@ class _EditProfileFormPageState extends State<EditProfileFormPage> {
           ],
         ),
       ),
-      floatingActionButton: GestureDetector(
-        onTap: () {},
-        child: Container(
-          height: 50,
-          width: MediaQuery.of(context).size.width,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: const Color.fromARGB(255, 43, 43, 43)),
-          margin: const EdgeInsets.all(20),
-          child: Text(
-            'Save',
-            style: const TextStyle(fontSize: 20),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

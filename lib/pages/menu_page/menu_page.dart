@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:project_delivery/pages/menu_page/menu_item_page.dart';
 import 'package:project_delivery/pages/menu_page/menu_type_page.dart';
-import 'package:project_delivery/providers/menu.dart';
+import 'package:project_delivery/providers/menu/menu.dart';
+import 'package:project_delivery/providers/menu/menu_type.dart';
 import 'package:provider/provider.dart';
 
 import '../../generated/locale_keys.g.dart';
@@ -17,20 +19,21 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   bool _searchBoolean = false;
-  List<int> _searchIndexList = [];
+  List<int> searchIndexList = [];
 
   Widget _searchTextField(List<String> list) {
     return TextField(
       onChanged: (String s) {
         setState(() {
-          _searchIndexList = [];
+          searchIndexList = [];
           for (int i = 0; i < list.length; i++) {
             if (list[i].contains(s)) {
-              _searchIndexList.add(i);
+              searchIndexList.add(i);
             }
           }
         });
       },
+      textCapitalization: TextCapitalization.words,
       autofocus: true,
       style: const TextStyle(
         fontSize: 20,
@@ -43,31 +46,31 @@ class _MenuPageState extends State<MenuPage> {
             UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
         hintText: 'Search',
         hintStyle: TextStyle(
-          color: Colors.white60,
           fontSize: 20,
         ),
       ),
     );
   }
 
-  Widget _searchListView(List<String> list) {
-    return ListView.builder(
-        itemCount: _searchIndexList.length,
-        itemBuilder: (ctx, index) {
-          index = _searchIndexList[index];
-          return ListTile(title: Text(list[index]));
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final typesList = Provider.of<Menu>(context).types;
+    final typesList = Provider.of<MenuType>(context)
+        .types
+        .map((elements) => elements.title)
+        .toList();
+    final imagesList = Provider.of<MenuType>(context)
+        .types
+        .map((elements) => elements.imageURL)
+        .toList();
+    final allItemsList = Provider.of<Menu>(context).allItems;
+    final allItemsListTitle =
+        allItemsList.map((elements) => elements.title).toList();
 
     return Scaffold(
       appBar: AppBar(
           title: !_searchBoolean
               ? const Text('Ваше Заведение')
-              : _searchTextField(typesList),
+              : _searchTextField(allItemsListTitle),
           actions: !_searchBoolean
               ? [
                   IconButton(
@@ -75,7 +78,7 @@ class _MenuPageState extends State<MenuPage> {
                       onPressed: () {
                         setState(() {
                           _searchBoolean = true;
-                          _searchIndexList = [];
+                          searchIndexList = [];
                         });
                       })
                 ]
@@ -89,42 +92,81 @@ class _MenuPageState extends State<MenuPage> {
                       })
                 ]),
       body: _searchBoolean
-          ? _searchListView(typesList)
-          : TypeMenuListItem(list: typesList),
+          ? SearchListView(
+              searchIndexList: searchIndexList, allItemsList: allItemsList)
+          : TypeMenuItemList(
+              typesList: typesList,
+              imagesList: imagesList,
+            ),
     );
   }
 }
 
-class TypeMenuListItem extends StatelessWidget {
-  const TypeMenuListItem({
-    Key? key,
-    required this.list,
-  }) : super(key: key);
+class SearchListView extends StatelessWidget {
+  final List<int> searchIndexList;
+  final List<MenuItem> allItemsList;
 
-  final List<String> list;
+  const SearchListView({
+    super.key,
+    required this.searchIndexList,
+    required this.allItemsList,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: list.length + 1,
+        itemCount: searchIndexList.length,
+        itemBuilder: (ctx, index) {
+          index = searchIndexList[index];
+          return GestureDetector(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => MenuItemPage(
+                      menuItem: allItemsList[index],
+                    ))),
+            child: ListTile(
+              title: Text(allItemsList[index].title),
+              trailing: Image.network(allItemsList[index].imageURL),
+            ),
+          );
+        });
+  }
+}
+
+class TypeMenuItemList extends StatelessWidget {
+  final List<String> typesList;
+  final List<String> imagesList;
+  const TypeMenuItemList({
+    Key? key,
+    required this.typesList,
+    required this.imagesList,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: typesList.length + 1,
         itemBuilder: (context, index) {
           if (index == 0) {
             return Container(
-              child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 6,
-                  ),
-                  child: Text(
-                    LocaleKeys.menuShops.tr(),
-                    style: TextStyle(fontSize: 20),
-                  )),
-            );
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 6,
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      LocaleKeys.menuShops.tr(),
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ));
           } else {
             return GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => MenuTypePage(menuType: list[index - 1]),
-              )),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => MenuTypePage(menuType: typesList[index - 1]),
+                ),
+              ),
               child: Stack(
                 children: [
                   Padding(
@@ -133,7 +175,7 @@ class TypeMenuListItem extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(
-                        'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg/1280px-Various_sushi%2C_beautiful_October_night_at_midnight.jpg',
+                        imagesList[index - 1],
                         fit: BoxFit.cover,
                         height: 120,
                         width: MediaQuery.of(context).size.width,
@@ -148,7 +190,7 @@ class TypeMenuListItem extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         width: 150,
                         child: Text(
-                          list[index - 1],
+                          typesList[index - 1],
                           overflow: TextOverflow.fade,
                         ),
                       )),

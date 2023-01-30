@@ -18,5 +18,15 @@ abstract class  LocaleKeys {
   static const youHaventFavorites = 'youHaventFavorites';
   static const youHaventOrders = 'youHaventOrders';
   static const menuShops = 'menuShops';
+  static const energyValue = 'energyValue';
+  static const protein = 'protein';
+  static const fats = 'fats';
+  static const carbohydrates = 'carbohydrates';
+  static const save = 'save';
+  static const sumTotal = 'sumTotal';
+  static const makeAnOrder = 'makeAnOrder';
+  static const deleteProducts = 'deleteProducts';
+  static const delete = 'delete';
+  static const cancel = 'cancel';
 
 }

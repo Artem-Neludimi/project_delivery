@@ -15,5 +15,15 @@
   "deleteAcc": "Удалить аккаунт",
   "youHaventFavorites": "У вас нет избранных товаров",
   "youHaventOrders": "У вас ещё нет заказов",
-  "menuShops":"Меню магазина"
+  "menuShops":"Меню магазина",
+  "energyValue":"Энергетическая ценность",
+  "protein":"Белки",
+  "fats":"Жиры",
+  "carbohydrates":"Углеводы",
+  "save":"Сохранить",
+  "sumTotal":"Общая сумма",
+  "makeAnOrder":"Оформить заказ",
+  "deleteProducts":"Удалить все продукты с корзины",
+  "delete":"Удалить",
+  "cancel":"Отменить"
 }

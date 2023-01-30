@@ -31,7 +31,17 @@ class CodegenLoader extends AssetLoader{
   "deleteAcc": "Видалити акаунт",
   "youHaventFavorites": "У вас немає обраних товарів",
   "youHaventOrders": "У вас ще немає замовлень",
-  "menuShops": "Меню магазина"
+  "menuShops": "Меню магазина",
+  "energyValue": "Енергетична цінність",
+  "protein": "Білки",
+  "fats": "Жири",
+  "carbohydrates": "Вуглеводи",
+  "save": "Зберегти",
+  "sumTotal": "Загальна сума",
+  "makeAnOrder": "Оформити замовлення",
+  "deleteProducts": "Видалити всі продукти з кошика?",
+  "delete": "Видалити",
+  "cancel": "Відмінити"
 };
 static const Map<String,dynamic> ru = {
   "language": "Русский",
@@ -50,7 +60,17 @@ static const Map<String,dynamic> ru = {
   "deleteAcc": "Удалить аккаунт",
   "youHaventFavorites": "У вас нет избранных товаров",
   "youHaventOrders": "У вас ещё нет заказов",
-  "menuShops": "Меню магазина"
+  "menuShops": "Меню магазина",
+  "energyValue": "Энергетическая ценность",
+  "protein": "Белки",
+  "fats": "Жиры",
+  "carbohydrates": "Углеводы",
+  "save": "Сохранить",
+  "sumTotal": "Общая сумма",
+  "makeAnOrder": "Оформить заказ",
+  "deleteProducts": "Удалить все продукты с корзины",
+  "delete": "Удалить",
+  "cancel": "Отменить"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "ru": ru};
 }
